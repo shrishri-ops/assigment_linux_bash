@@ -1,0 +1,216 @@
+#!/bin/bash
+
+# Define directories
+SOURCE_DIR="/home/user/documents"
+BACKUP_DIR="/home/user/backup"
+BACKUP_FILE="documents_backup.tar.gz"
+
+# Create the backup directory if it doesn't exist
+mkdir -p "$BACKUP_DIR"
+
+# Compress the documents directory into a tarball
+tar -zcf "$BACKUP_DIR/$BACKUP_FILE" -C "$SOURCE_DIR" .
+
+# Optional: Print a message
+echo "Backup of $SOURCE_DIR completed successfully at $(date)."
+#!/bin/bash
+
+# Define directories
+SOURCE_DIR="/home/user/documents"
+BACKUP_DIR="/home/user/backup"
+BACKUP_FILE="documents_backup.tar.gz"
+
+# Create the backup directory if it doesn't exist
+mkdir -p "$BACKUP_DIR"
+
+# Compress the documents directory into a tarball
+tar -zcf "$BACKUP_DIR/$BACKUP_FILE" -C "$SOURCE_DIR" .
+
+# Optional: Print a message
+echo "Backup of $SOURCE_DIR completed successfully at $(date)."
+
+----------------------------------
+Contents of backup_documents.sh:
+# (add your script content, then save and exit)#!/bin/bash
+chmod +x backup_documents.sh  # Make the script executable
+./backup_documents.sh         # Run the script
+
+# Define directories
+SOURCE_DIR="/home/user/documents"
+BACKUP_DIR="/home/user/backup"
+BACKUP_FILE="documents_backup.tar.gz"
+
+# Create the backup directory if it doesn't exist
+mkdir -p "$BACKUP_DIR"
+
+# Compress the documents directory into a tarball
+tar -zcf "$BACKUP_DIR/$BACKUP_FILE" -C "$SOURCE_DIR" .
+
+# Optional: Print a message
+echo "Backup of $SOURCE_DIR completed successfully at $(date)."
+chmod +x backup_documents.sh
+
+----------------------------------
+Contents of process_monitor.sh:
+#!/bin/bash
+
+# Define the process to check
+PROCESS="apache2"
+
+# Define the log file
+LOG_FILE="/var/log/process_monitor.log"
+
+# Function to log messages
+log_message() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
+}
+
+# Check if the process is running
+if pgrep -x "$PROCESS" > /dev/null; then
+    echo "$PROCESS is running."
+else
+    echo "$PROCESS is not running. Starting it now."
+
+    # Start the process (assuming it's managed by systemd)
+    systemctl start "$PROCESS"
+
+    # Log the action
+    log_message "$PROCESS was not running and has been started."
+
+    echo "$PROCESS has been started."
+fi
+
+----------------------------------
+Contents of simple_calculator.sh:
+#!/bin/bash
+
+# Function to perform the calculation
+calculate() {
+    case $3 in
+        +) echo "Result: $(($1 + $2))" ;;
+        -) echo "Result: $(($1 - $2))" ;;
+        \*) echo "Result: $(($1 * $2))" ;;
+        /)
+            if [ "$2" -eq 0 ]; then
+                echo "Error: Division by zero is not allowed."
+            else
+                echo "Result: $(($1 / $2))"
+            fi
+            ;;
+        *) echo "Error: Invalid operator. Use +, -, *, or /." ;;
+    esac
+}
+
+# Prompt for input
+read -p "Enter first number: " num1
+read -p "Enter second number: " num2
+read -p "Enter operator (+, -, *, /): " operator
+
+# Call the calculate function
+calculate $num1 $num2 $operator
+
+----------------------------------
+Contents of system_report.sh:
+#!/bin/bash
+
+# Define the report file
+REPORT_FILE="system_report.txt"
+
+# Create or clear the report file
+> "$REPORT_FILE"
+
+# Append system uptime
+echo "System Uptime:" >> "$REPORT_FILE"
+uptime >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+
+# Append memory usage
+echo "Memory Usage:" >> "$REPORT_FILE"
+free -h >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+
+# Append CPU load
+echo "CPU Load:" >> "$REPORT_FILE"
+top -bn1 | grep "Cpu(s)" >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+
+# Append disk usage
+echo "Disk Usage:" >> "$REPORT_FILE"
+df -h >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+
+# Append running processes
+echo "Running Processes:" >> "$REPORT_FILE"
+ps aux >> "$REPORT_FILE"
+echo "" >> "$REPORT_FILE"
+
+# Optional: Print a message indicating completion
+echo "System report has been generated and saved to $REPORT_FILE."
+
+----------------------------------
+Contents of text_file_analysis.sh:
+#!/bin/bash
+
+# Check if a file argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <filename>"
+    exit 1
+fi
+
+FILE="$1"
+
+# Check if the file exists
+if [ ! -e "$FILE" ]; then
+    echo "Error: File '$FILE' does not exist."
+    exit 1
+fi
+
+# Use wc (word count) to get the counts
+LINE_COUNT=$(wc -l < "$FILE")
+WORD_COUNT=$(wc -w < "$FILE")
+CHAR_COUNT=$(wc -c < "$FILE")
+
+# Display the counts
+echo "Analysis of '$FILE':"
+echo "Lines: $LINE_COUNT"
+echo "Words: $WORD_COUNT"
+echo "Characters: $CHAR_COUNT"
+----------------------------------
+rahul@shrishri:~$ nano simple_calculator.sh^C
+rahul@shrishri:~$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
